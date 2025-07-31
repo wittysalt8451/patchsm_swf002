@@ -36,7 +36,9 @@ namespace sudwalfulkaan
         // Manual delay line implementation for SDRAM
         float* delay_buffer_;
         size_t delay_size_;
-        size_t write_pos_;
-        size_t read_pos_;
+        size_t write_pos_L_;
+        size_t write_pos_R_;
+        size_t read_pos_L_;
+        size_t read_pos_R_;
     };
 }
