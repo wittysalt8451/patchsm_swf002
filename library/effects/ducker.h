@@ -26,12 +26,13 @@ namespace sudwalfulkaan
          * @param right_sample The input sample for the right channel.
          */
         void Process(float &left_sample, float &right_sample);
+        
 
     private:
-        float ducking_amount;    // Amount of volume reduction (0.0 = full duck, 1.0 = no ducking)
-        float ducking_release;   // Release time in seconds
-        float sample_rate;       // Audio sample rate
-        float current_duck_level; // Tracks the current gain level
+        float ducking_amount_;    // Amount of volume reduction (0.0 = full duck, 1.0 = no ducking)
+        float ducking_release_;   // Release time in seconds
+        float sample_rate_;       // Audio sample rate
+        float current_duck_level_; // Tracks the current gain level
     };
 }
 

@@ -1,4 +1,5 @@
 #include "SwfBiquad.h"
+#include "daisysp.h"
 #include <cmath>
 #include <algorithm>
 
@@ -8,41 +9,41 @@
 
 using namespace sudwalfulkaan;
 
-void SwfBiquad::Init(float sample_rate, SwfBiquad::Type type) {
+void sudwalfulkaan::SwfBiquad::Init(float sample_rate, SwfBiquad::Type type) {
     sample_rate_ = sample_rate;
     type_ = type;
     z1_ = z2_ = 0.0f;
     CalcCoefficients();
 }
 
-void SwfBiquad::SetType(SwfBiquad::Type type) {
+void sudwalfulkaan::SwfBiquad::SetType(SwfBiquad::Type type) {
     type_ = type;
     CalcCoefficients();
 }
 
-void SwfBiquad::SetFreq(float freq) {
-    freq_ = fclamp(freq, 10.0f, sample_rate_ * 0.45f); // Nyquist protection
+void sudwalfulkaan::SwfBiquad::SetFreq(float freq) {
+    freq_ = daisysp::fclamp(freq, 10.0f, sample_rate_ * 0.45f); // Nyquist protection
     CalcCoefficients();
 }
 
-void SwfBiquad::SetQ(float q) {
-    q_ = fclamp(q, 0.01f, 10.0f); // avoid div by 0
+void sudwalfulkaan::SwfBiquad::SetQ(float q) {
+    q_ = daisysp::fclamp(q, 0.01f, 10.0f); // avoid div by 0
     CalcCoefficients();
 }
 
-void SwfBiquad::SetGainDb(float gain_db) {
-    gain_db_ = fclamp(gain_db, -24.0f, 24.0f);
+void sudwalfulkaan::SwfBiquad::SetGainDb(float gain_db) {
+    gain_db_ = daisysp::fclamp(gain_db, -24.0f, 24.0f);
     CalcCoefficients();
 }
 
-float SwfBiquad::Process(float in) {
+float sudwalfulkaan::SwfBiquad::Process(float in) {
     float out = b0_ * in + z1_;
     z1_ = b1_ * in - a1_ * out + z2_;
     z2_ = b2_ * in - a2_ * out;
     return out;
 }
 
-void SwfBiquad::CalcCoefficients() {
+void sudwalfulkaan::SwfBiquad::CalcCoefficients() {
     float A = std::pow(10.0f, gain_db_ / 40.0f);
     float omega = 2.0f * M_PI * freq_ / sample_rate_;
     float sn = std::sin(omega);

@@ -220,15 +220,13 @@ build/DigitalHeat.o: DigitalHeat.cpp \
  ../../libDaisy//src/util/VoctCalibration.h \
  ../../libDaisy//src/util/WaveTableLoader.h \
  ../../libDaisy//src/sys/fatfs.h ../../libDaisy//src/util/WavWriter.h \
- library/effects/LinkwitzRileyCrossover.h \
- library/effects/LinkwitzRileyCrossover.cpp \
- library/effects/LinkwitzRileyCrossover.h library/effects/Saturation.h \
- library/effects/Saturation.cpp library/ui/UIManager.h \
- library/ui/ParamSmoother.h ../../libDaisy//src/sys/system.h \
- library/ui/UIManager.cpp library/effects/SwfBiquad.h \
- library/effects/SwfBiquad.cpp library/effects/StereoReverbSc.h \
- library/effects/StereoReverbSc.cpp library/effects/StereoPhaser.h \
- library/effects/StereoPhaser.cpp library/tools.cpp
+ library/effects/Saturation.h library/effects/Saturation.cpp \
+ library/ui/UIManager.h library/ui/ParamSmoother.h \
+ ../../libDaisy//src/sys/system.h library/ui/UIManager.cpp \
+ library/effects/SwfBiquad.h library/effects/SwfBiquad.cpp \
+ library/effects/StereoReverbSc.h library/effects/StereoReverbSc.cpp \
+ library/effects/StereoPhaser.h library/effects/StereoPhaser.cpp \
+ library/tools.cpp
 ../../libDaisy//Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
 ../../libDaisy//Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h:
 ../../libDaisy//Drivers/CMSIS/Include/core_cm7.h:
@@ -484,9 +482,6 @@ build/DigitalHeat.o: DigitalHeat.cpp \
 ../../libDaisy//src/util/WaveTableLoader.h:
 ../../libDaisy//src/sys/fatfs.h:
 ../../libDaisy//src/util/WavWriter.h:
-library/effects/LinkwitzRileyCrossover.h:
-library/effects/LinkwitzRileyCrossover.cpp:
-library/effects/LinkwitzRileyCrossover.h:
 library/effects/Saturation.h:
 library/effects/Saturation.cpp:
 library/ui/UIManager.h:

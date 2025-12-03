@@ -26,6 +26,11 @@ void StereoPhaser::SetDelays(float* buffer, size_t size)
     write_pos_R_  = 0;
     read_pos_L_   = 0;
     read_pos_R_   = 0;
+    
+    // Initialize buffer to zero to prevent garbage audio
+    for (size_t i = 0; i < size; i++) {
+        buffer[i] = 0.0f;
+    }
 }
 
 void StereoPhaser::SetFreq(float freq)
@@ -52,6 +57,10 @@ void StereoPhaser::SetMix(float mix)
 
 float StereoPhaser::ProcessLeft(float in)
 {
+    if (!delay_buffer_ || delay_size_ == 0) {
+        return in; // Safety check
+    }
+    
     float mod       = (lfoL_.Process() + 1.0f) * 0.5f;
     float delayTime = 1.0f + mod * depth_ * (float(delay_size_) * 0.25f - 2.0f);
     
@@ -70,6 +79,10 @@ float StereoPhaser::ProcessLeft(float in)
 
 float StereoPhaser::ProcessRight(float in)
 {
+    if (!delay_buffer_ || delay_size_ == 0) {
+        return in; // Safety check
+    }
+    
     float mod       = (lfoR_.Process() + 1.0f) * 0.5f;
     float delayTime = 1.0f + mod * depth_ * (float(delay_size_) * 0.25f - 2.0f);
     
